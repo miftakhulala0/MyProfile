@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Rizqi Miftakhul A'la | Frontend Web Developer</title>
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: #F9FAFB; color: #1F2937; line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; border-bottom: 1px solid #E5E7EB; }
+        .section-title { font-family: 'Georgia', serif; font-size: 2.2rem; text-align: center; color: #111827; margin-bottom: 40px; font-weight: normal; }
+        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .btn { display: inline-block; padding: 12px 28px; border-radius: 999px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; font-size: 0.95rem; }
+        .btn-primary { background-color: #2563EB; color: white; }
+        .btn-primary:hover { background-color: #1D4ED8; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15); }
+        .btn-secondary { border: 1px solid #D1D5DB; color: #4B5563; background-color: white; }
+        .btn-secondary:hover { border-color: #2563EB; color: #2563EB; transform: translateY(-2px); }
+        nav { background-color: rgba(255, 255, 255, 0.95); position: fixed; top: 0; left: 0; right: 0; z-index: 1000; border-bottom: 1px solid #E5E7EB; backdrop-filter: blur(8px); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-weight: 700; color: #111827; text-decoration: none; font-size: 1.1rem; letter-spacing: -0.5px; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { text-decoration: none; color: #4B5563; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+        .nav-links a:hover { color: #2563EB; }
+        #home { padding-top: 140px; padding-bottom: 60px; }
+        .hero-grid { display: flex; align-items: center; gap: 60px; }
+        .hero-content { flex: 1.2; text-align: left; }
+        .hero-photo { flex: 0.8; display: flex; justify-content: center; }
+        .tagline { text-transform: uppercase; letter-spacing: 3px; font-size: 0.85rem; font-weight: 700; color: #2563EB; margin-bottom: 15px; }
+        #home h1 { font-family: 'Georgia', serif; font-size: 3rem; line-height: 1.15; color: #111827; font-weight: normal; margin-bottom: 20px; }
+        .hero-desc { font-size: 1.1rem; color: #4B5563; margin-bottom: 35px; max-width: 580px; }
+        .profile-frame { width: 280px; height: 380px; border-radius: 140px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.06); border: 1px solid #E5E7EB; }
+        .profile-frame img { width: 100%; height: 100%; object-fit: cover; }
+        #about .about-card { max-width: 680px; margin: 0 auto; text-align: center; font-size: 1.1rem; color: #4B5563; line-height: 1.8; }
+        .education-grid {max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;}
+        .education-card {background: white; border: 1px solid #E5E7EB; border-radius: 12px; padding: 25px; text-decoration: none; color: inherit; display: block; transition: all 0.3s ease;}
+        .education-card:hover {transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.05); border-color: #2563EB;}
+        .education-card h3 {font-size: 1.2rem; color: #111827; margin-bottom: 8px;}
+        .education-card p {color: #4B5563; margin-bottom: 5px; font-weight: 500; transition: color 0.2s ease;}
+        .education-card:hover p {color: #2563EB;}
+        .education-card span {color: #6B7280; font-size: 0.9rem;}.browse-card {max-width: 800px; margin: 0 auto; background: white; border: 1px solid #E5E7EB; border-radius: 16px; padding: 50px 40px; text-align: center; text-decoration: none; color: inherit; display: block; transition: all 0.3s ease;}
+        .browse-card:hover {transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.05); border-color: #2563EB;}
+        .browse-card h3 {font-size: 1.8rem; color: #111827; margin-bottom: 15px; transition: color 0.2s ease;}
+        .browse-card:hover h3 {color: #2563EB;}
+        .browse-card p {color: #4B5563; margin-bottom: 30px; font-size: 1.05rem; line-height: 1.8;}
+        .browse-btn {display: inline-block; padding: 12px 28px; border-radius: 999px; background: #2563EB; color: white; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease;}
+        .browse-card:hover .browse-btn {background: #1D4ED8; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);}
+        #contact { text-align: center; background-color: #111827; color: white; border: none; }
+        #contact .section-title { color: white; }
+        .cta-desc { font-size: 1.1rem; color: #9CA3AF; max-width: 600px; margin: -20px auto 35px; }
+        .social-links {display: inline-flex; align-items: center; justify-content: center; gap: 28px; margin-top: 25px; background: white; padding: 8px 36px; border-radius: 999px; transition: all .3s ease; box-shadow: 0 4px 12px rgba(0,0,0,.05);}
+        .social-links:hover {transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,.15);}
+        .social-icon {display: flex; align-items: center; justify-content: center; text-decoration: none; transition: transform 0.2s ease;}
+        .social-icon img {width: 36px; height: 36px; display: block; object-fit: contain; transition: transform 0.2s ease;}
+        .social-icon:hover {transform: translateY(-2px);}
+        .social-icon:hover img {transform: scale(1.1);}
+        footer { padding: 40px 0; background-color: #0B0F19; color: #6B7280; font-size: 0.9rem; border-top: 1px solid #1F2937; }
+        .footer-container { display: flex; justify-content: center; text-align: center; }
+        @media (max-width: 768px) {section { padding: 60px 0; } .hero-grid { flex-direction: column-reverse; text-align: center; gap: 40px; } .hero-content { text-align: center; } #home h1 { font-size: 2.2rem; } .hero-desc { margin: 0 auto 30px; } .btn-group { justify-content: center; } .nav-links { display: none; } .browse-card { padding: 40px 20px; }}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a href="#home" class="logo">Muhammad Rizqi Miftakhul A'la</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <p class="tagline">Frontend Web Developer & Digital Builder</p>
+                    <h1>Muhammad Rizqi Miftakhul A'la</h1>
+                    <p class="hero-desc">
+                        Exploring ideas, building products, and learning through the process.
+                    </p>
+                </div>
+                <div class="hero-photo">
+                    <div class="profile-frame">
+                        <img src="./assets/profile.jpg" alt="Muhammad Rizqi Miftakhul A'la">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Who I am</h2>
+            <div class="about-card">
+                <p>
+                    I have a deep interest in technology, business, and the process of building things from scratch.
+                    For me, technology isn’t just about writing code—it’s about creating useful solutions that make a real impact.
+                    I enjoy learning new things, developing my skills on my own, and constantly looking for ways to turn ideas into something of value.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <a href="https://referensi.data.kemendikdasmen.go.id/pendidikan/npsn/002002" target="_blank" rel="noopener noreferrer" class="education-card">
+                    <h3>Bachelor of Information Systems</h3>
+                    <p>Sepuluh Nopember Institute of Technology (ITS)</p>
+                    <span>2026 - Present</span>
+                </a>
+                <a href="https://referensi.data.kemendikdasmen.go.id/pendidikan/npsn/69849456" target="_blank" rel="noopener noreferrer" class="education-card">
+                    <h3>Science and Mathematics Program (MIPA)</h3>
+                    <p>MA Tahfidz Yanbu'ul Qur'an</p>
+                    <span>2023 - 2026</span>
+                </a>
+                <a href="https://referensi.data.kemendikdasmen.go.id/pendidikan/npsn/20364162" target="_blank" rel="noopener noreferrer" class="education-card">
+                    <h3>Islamic Junior High School</h3>
+                    <p>MTs Tahfidz Yanbu'ul Qur'an</p>
+                    <span>2020 - 2023</span>
+                </a>
+                <a href="https://referensi.data.kemendikdasmen.go.id/pendidikan/npsn/60712413" target="_blank" rel="noopener noreferrer" class="education-card">
+                    <h3>Islamic Elementary School</h3>
+                    <p>MI NU Tahfidhul Qur'an TBS Kudus</p>
+                    <span>2014 - 2020</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Browse Projects</h2>
+            <a href="./BrowseProject/index.html" target="_blank" rel="noopener noreferrer" class="browse-card">
+                <h3>Explore My Project Library</h3>
+                <p>
+                    A collection of calculators, business websites, 
+                    experiments, and other projects I have built and 
+                    continue to develop.
+                </p>
+                <span class="browse-btn">
+                    Browse Projects
+                </span>
+            </a>
+        </div>
+    </section>
+    <section id="certificates">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <a href="https://drive.google.com/drive/folders/12dJx-PhKX6cekORPZvB4Xy1r_qzfo8DB?usp=sharing"  target="_blank" rel="noopener noreferrer" class="browse-card">
+                <h3>View Certifications</h3>
+                <p>
+                    Explore certificates, achievements, courses, and learning 
+                    records that document my educational journey.
+                </p>
+                <span class="browse-btn">
+                    Open Credential Folder
+                </span>
+            </a>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Interested in collaborating?</h2>
+            <p class="cta-desc">I'm always excited to build useful digital products, contribute to meaningful projects, and collaborate with people who share a passion for technology and innovation.</p>
+            <div class="btn-group">
+                <a href="https://wa.me/6282225826161" target="_blank" class="btn btn-primary">Send Message</a>
+                <a href="mailto:miftakhulaa@gmail.com" class="btn btn-secondary" style="color: white; border-color: rgba(255,255,255,0.2); background: transparent;">Send Email</a>
+            </div>
+            <div class="social-links">
+                <a href="https://instagram.com/mif.ala_" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+                    <img src="./assets/ig.svg" alt="Instagram">
+                </a>
+                <a href="https://facebook.com/miftah.ala.1" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook">
+                    <img src="./assets/fb.svg" alt="Facebook">
+                </a>
+                <a href="https://github.com/miftakhulala0" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
+                    <img src="./assets/github.svg" alt="GitHub">
+                </a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container footer-container">
+            <p>&copy; 2026 Muhammad Rizqi Miftakhul A'la. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.addEventListener('beforeunload', () => {
+            window.scrollTo(0, 0);
+        });
+        window.addEventListener('load', () => {
+            if (window.location.hash) {
+                history.replaceState(null, null, window.location.pathname + window.location.search);
+            }
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+</html>
