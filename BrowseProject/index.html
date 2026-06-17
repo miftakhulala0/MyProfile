@@ -105,7 +105,15 @@
                 rawProjectsData.forEach(project => {
                     const card = document.createElement('div');
                     card.className = 'project-link';
-                    const imageUrl = project.image?.trim() || './assets/noimage.webp';
+                    const targetUrl = project.url?.trim() || '';
+                    let imageUrl = './assets/noimage.webp';
+                    if (project.image && project.image.trim() !== '') {
+                        // Mendahulukan gambar dari spreadsheet jika diisi manual
+                        imageUrl = project.image.trim();
+                    } else if (targetUrl && targetUrl !== '#') {
+                        // Otomatis membuat screenshot menggunakan Microlink API jika kolom image kosong
+                        imageUrl = `https://api.microlink.io?url=${encodeURIComponent(targetUrl)}&screenshot=true&embed=screenshot.url`;
+                    }
                     card.innerHTML = `
                         <article class="project-card">
                             <div class="project-image">
@@ -125,7 +133,7 @@
                         $('modal-image').src = imageUrl;
                         $('modalCategory').textContent = "Category: " + (project.category || '-');
                         $('modalYear').textContent = "Year: " + (project.year || '-');
-                        $('modal-link').href = project.url || '#';
+                        $('modal-link').href = targetUrl || '#';
                         const descContainer = $('modal-description');
                         descContainer.innerHTML = '';
                         if (project.description) {
